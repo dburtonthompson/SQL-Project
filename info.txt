@@ -1,0 +1,124 @@
+
+CREATE TABLE Students (
+	student_id integer PRIMARY KEY, 
+	first_name Text NOT NULL, 
+  	last_name Text not Null, 
+  	classificaion Text NOT NULL, 
+  	graduating text NOT NULL
+);
+
+INSERT into Students VALUES
+(1, "DeVonne", "Burton-Thompson", "Senior", "Y"),
+(2, "Ivana", "Burton-Thompson", "Freshman", "N"),
+(3, "Bridgett", "Simpson", "Senior", "Y"),
+(4, "Brittney", "Simpson", "Senior", "Y"),
+(5, "Ariel", "Thompson", "sophomore", "N"),
+(6, "Aaron", "Thompson", "Senior", "N"),
+(7, "Robert", "Freeman", "Senior", "Y"),
+(8, "Gabby", "Carelock", "Junior", "N"),
+(9, "Brittney", "Albany", "Senior", "Y"),
+(10, "Jock", "Bitting", "Senior", "Y"),
+(11, "Jalen", "Bitting", "Sophomore", "N"),
+(12, "Chaz", "Thomas", "Senior", "Y"),
+(13, "Patrick", "Barnes", "junior", "N"),
+(14, "Jonaa", "Smith", "Senior", "Y"),
+(15, "Jaylen", "Smith", "sophomore", "N"),
+(16, "Ksha", "Smith", "sophomore", "N"),
+(17, "Charmers", "Redd", "Senior", "Y"),
+(18, "Nicole", "Love", "Freshman", "N"),
+(19, "Candice", "Chisholm", "Senior", "Y"),
+(20, "Andrew", "Smitty", "sophomore", "N"),
+(21, "Tom", "Sharks", "Senior", "N"),
+(22, "Asia", "Earrs", "Senior", "Y"),
+(23, "Katie", "Sherrll", "Freshman", "N"),
+(24, "John", "Wilson", "Freshman", "N"),
+(25, "Kisha", "Prez", "sophomore", "N")
+;
+
+
+
+
+CREATE TABLE Graduating (
+  Student_id integer PRIMARY KEY, 
+  School_type text, 
+  first_choice text not NULL, 
+  second_choice text not NULL,
+  thrid_choice text NOT null
+);
+
+
+INSERT into Graduating VALUES
+(1, "University", "Winston-Salem State", "NC A&T State", "NC Cental" ),
+(3, "Community College", "Central Piedmont", "Gaston Conuty", "Rowan-Cabarrus" ),
+(4, "University", "Duke", "NC State", "UNC Chapel Hill" ),
+(7, "College", "Bellmont-Abby", "Barber Scotia", "Davidson" ),
+(9, "University", "Winston-Salem State", "Johnson C. Smith", "Gardner-Web" ),
+(10, "College", "Kapplan", "Livingstone", "Clinton" ),
+(12, "Technical School", "York Tech", "Greenville Tech", "Spartanburg Tech" ),
+(13, "Trade School", "Tech Talent South", "Omitt", "Connecticut School of Broadcasting" ),
+(17, "Trade School", "NC Nail Academy", "Empire Beauty", "Touch of Precision" ),
+(22, "Technical School", "Florence Darlington Tech", "Midlands Tech", "Miller-Motte Tech" );
+
+
+
+
+
+Create TABLE Schools(
+  School_type text PRIMARY KEY, 
+  School_length integer, 
+  School_cost integer
+);
+
+INSERT INTO Schools VALUES
+("HBCU", 4, 30000),
+("PWI", 4, 80000),
+("Commnuity College", 2, 7000), 
+("University", 4, 65000), 
+("College", 4, 55000),
+("Trade", 1, 25000), 
+("Tech", 1, 10000), 
+("Private", 4, 180000), 
+("Single Sex", 4, 64000), 
+("Arts", 2, 32000)
+
+
+
+INSERT INTO Students VALUES
+(26, "Bryant", "Cliton", "Senior", "y"), 
+(27, "Blake", "Perry", "Freshman", "N"),
+(28, "Roland", "Patel", "sophomore", "N");
+
+
+
+SELECT 
+    first_name,
+    last_name,
+    graduating,
+    school_type,
+    first_choice
+    
+FROM 
+    Students
+INNER JOIN Graduating 
+    ON Graduating.student_id = Students.student_id;
+
+
+
+SELECT
+    first_name,
+    last_name,
+    graduating,
+    school_cost,
+    first_choice,
+    second_choice,
+    school_length
+FROM
+    Students
+    INNER JOIN Graduating ON Graduating.student_id = Students.student_id
+
+    INNER JOIN Schools ON Graduating.school_type = Schools.school_type;
+
+
+ALTER TABLE Schools 
+ADD COLUMN financial_aid text;
+
